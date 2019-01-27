@@ -9,7 +9,7 @@ const globals = {
 }
 
 const baseConfig = {
-  input: './src/index.tsx',
+  input: './src/react-hooks-connect.tsx',
   plugins: [
     typescript(),
   ],
