@@ -1,0 +1,32 @@
+{
+  "name": "react-hooks-connect",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/react-hooks-connect.cjs.js",
+  "module": "dist/react-hooks-connect.esm.js",
+  "unpkg": "dist/react-hooks-connect.js",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "iMasanari",
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "^4.17.11",
+    "tslib": "^1.9.3"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.120",
+    "@types/react": "^16.7.20",
+    "@types/react-dom": "^16.0.11",
+    "react": "^16.8.0-alpha.1",
+    "react-dom": "^16.8.0-alpha.1",
+    "rollup": "^1.1.2",
+    "rollup-plugin-typescript2": "^0.19.2",
+    "typescript": "^3.2.4"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0-alpha.1"
+  }
+}
