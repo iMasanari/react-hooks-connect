@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>exsample</title>
+
+  <style>
+    .count {
+      display: inline-block;
+      width: 30px;
+      border-radius: 8px;
+      text-align: center;
+      animation: anime1 0.6s ease-out 0s alternate;
+    }
+
+    @keyframes anime1 {
+      0% { background-color: transparent;}
+      50% { background-color: aqua;}
+      100% { background-color: transparent;}
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/react@16.8.1/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@16.8.1/umd/react-dom.development.js"></script>
+  <script src="../dist/react-hooks-connect.js"></script>
+  <script type="text/babel" src="script.js"></script>
+</body>
+
+</html>
