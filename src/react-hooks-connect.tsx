@@ -1,17 +1,17 @@
 import React from 'react'
 
-interface ConnectedComponent<OwnProps, Props> extends React.FunctionComponent<OwnProps> {
-  WrappedComponent: React.ComponentType<Props>
+interface ConnectedComponent<OwnProps, MergeProps> extends React.FunctionComponent<OwnProps> {
+  WrappedComponent: React.ComponentType<MergeProps>
 }
 
-type PrivateData<OwnProps, HooksProps, Props> = [
-  React.ComponentType<Props>,
+type PrivateData<OwnProps, HooksProps, MergeProps> = [
+  React.ComponentType<MergeProps>,
   OwnProps,
-  (hooksProps: HooksProps, ownProps: OwnProps) => Props
+  (hooksProps: HooksProps, ownProps: OwnProps) => MergeProps
 ]
 
-interface MemolizedProps<OwnProps, HooksProps, Props> {
-  REACT_HOOKS_CONNECT_PRIVATE_PROP: PrivateData<OwnProps, HooksProps, Props>
+interface MemolizedProps<OwnProps, HooksProps, MergeProps> {
+  REACT_HOOKS_CONNECT_PRIVATE_PROP: PrivateData<OwnProps, HooksProps, MergeProps>
 }
 
 const Memolized = React.memo((
@@ -24,14 +24,14 @@ const Memolized = React.memo((
 
 const defaultMergeProps = (hooksProps: any, ownProps: any) => ({ ...ownProps, ...hooksProps })
 
-const connect = <OwnProps, HooksProps, Props = HooksProps>(
+const connect = <OwnProps extends {} = {}, HooksProps = {}, MergeProps = OwnProps & HooksProps>(
   mapHooks: (ownProps: OwnProps) => HooksProps,
-  mergeProps = defaultMergeProps as (hooksProps: HooksProps, ownProps: OwnProps) => Props,
+  mergeProps = defaultMergeProps as (hooksProps: HooksProps, ownProps: OwnProps) => MergeProps,
 ) =>
-  (Component: React.ComponentType<Props>): ConnectedComponent<OwnProps, Props> => {
+  (Component: React.ComponentType<MergeProps>): ConnectedComponent<OwnProps, MergeProps> => {
     const Connected = (
       (ownProps) => {
-        const _data: PrivateData<OwnProps, HooksProps, Props> = [Component, ownProps, mergeProps]
+        const _data: PrivateData<OwnProps, HooksProps, MergeProps> = [Component, ownProps, mergeProps]
         const privateData = React.useMemo(() => _data, _data)
         const hooksProps = mapHooks(ownProps) as React.PropsWithRef<HooksProps>
 
@@ -42,7 +42,7 @@ const connect = <OwnProps, HooksProps, Props = HooksProps>(
           />
         )
       }
-    ) as ConnectedComponent<OwnProps, Props>
+    ) as ConnectedComponent<OwnProps, MergeProps>
 
     Connected.WrappedComponent = Component
 
