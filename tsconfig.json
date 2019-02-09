@@ -11,7 +11,4 @@
     "resolveJsonModule": true,
     "outDir": "dist",
   },
-  "exclude": [
-    "dist/**/*"
-  ],
 }

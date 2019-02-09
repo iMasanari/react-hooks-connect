@@ -11,7 +11,7 @@ const globals = {
 const baseConfig = {
   input: './src/react-hooks-connect.tsx',
   plugins: [
-    typescript(),
+    typescript({ tsconfig: 'tsconfig.build.json' }),
   ],
   external: Object.keys(globals),
 }
